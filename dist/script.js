@@ -14094,7 +14094,60 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _slider__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./slider */ "./src/js/slider.js");
+/* harmony import */ var _modules_modals__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/modals */ "./src/js/modules/modals.js");
 
+
+window.addEventListener('DOMContentLoaded', () => {
+  Object(_modules_modals__WEBPACK_IMPORTED_MODULE_1__["default"])();
+});
+
+/***/ }),
+
+/***/ "./src/js/modules/modals.js":
+/*!**********************************!*\
+  !*** ./src/js/modules/modals.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+const modals = () => {
+  function bindModal(triggerSelector, modalSelector, closeSelector) {
+    const trigger = document.querySelectorAll(triggerSelector),
+      modal = document.querySelector(modalSelector),
+      close = document.querySelector(closeSelector);
+    trigger.forEach(item => {
+      item.addEventListener('click', e => {
+        if (e.target) {
+          e.preventDefault();
+        }
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+      });
+    });
+    close.addEventListener('click', () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    });
+    modal.addEventListener('click', e => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    });
+  }
+  function showModalByTime(selector, time) {
+    setTimeout(() => {
+      document.querySelector(selector).style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }, time);
+  }
+  bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
+  bindModal('.phone_link', '.popup', '.popup .popup_close');
+  showModalByTime('.popup', 60000);
+};
+/* harmony default export */ __webpack_exports__["default"] = (modals);
 
 /***/ }),
 
