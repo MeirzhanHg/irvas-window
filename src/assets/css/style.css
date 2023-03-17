@@ -18,6 +18,21 @@ body {
   color: red;
 }
 
+.faded {
+  animation-name: faded;
+  animation-duration: 1.5s;
+}
+
+@keyframes faded {
+  from {
+    opacity: 0.1;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 a:hover {
   text-decoration: none;
 }
@@ -1816,5 +1831,13 @@ textarea:focus {
     /*css animations*/
     -webkit-animation: none !important;
     animation: none !important;
+  }
+}
+.small__img {
+  margin: 0;
+}
+@media (max-width: 668px) {
+  .small__img {
+    width: 400px;
   }
 }
